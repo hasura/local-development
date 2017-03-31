@@ -13,7 +13,6 @@ spec:
       containers:
       - name: shukra
         image: hasura/shukra:e578fc2
-        imagePullPolicy: Always
         command:
         - shukra
         - -c
