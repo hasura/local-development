@@ -12,7 +12,7 @@ minikube start
 
 - Get your "user token" from https://beta.hasura.io/settings
 
-- Find out your minikube ip:
+- Get your minikube ip:
 ```
 minikube ip
 ```
@@ -32,7 +32,7 @@ curl \
 
 - Edit ``controller-configmap.yaml`` and set ``controller-conf.json -> provider.Local.gatewayIp`` to the minikube ip obtained from above.
 - Edit ``project-conf.yaml`` and set the domain to the value generated above.
-- Run ``./gen-project-conf.sh | kubectl create -f -``
+- Run ``kubectl create -f project-conf.yaml``
 - Run ``kubectl create -f project-secrets.yaml``
 - Run ``kubectl create ns hasura``
 - Run ``kubectl create -f controller-configmap.yaml``
