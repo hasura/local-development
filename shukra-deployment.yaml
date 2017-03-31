@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: shukra
+  namespace: hasura
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shukra
+    spec:
+      containers:
+      - name: shukra
+        image: hasura/shukra:e578fc2
+        imagePullPolicy: Always
+        command:
+        - shukra
+        - -c
+        - /conf/controller-conf.json
+        volumeMounts:
+        - name: controller-conf
+          mountPath: /conf
+      volumes:
+      - name: controller-conf
+        configMap:
+          name: controller-conf

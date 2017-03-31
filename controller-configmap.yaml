@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: controller-conf
+  namespace: hasura
+data:
+  controller-conf.json: |
+    {
+        "apiServer" : {
+            "type": "auto"
+        },
+        "projectNamespace" : "default",
+        "controllerNamespace" : "hasura",
+        "provider" : {
+            "Local": {
+                "gatewayIp" : "192.168.99.103",
+                "sshPort" : "2022",
+                "persistentDirectory" : "/data"
+            }
+        },
+        "projectConfigMap" : "hasura-project-conf",
+        "statusConfigMap" : "hasura-project-status",
+        "logLevel" : "debug"
+    }

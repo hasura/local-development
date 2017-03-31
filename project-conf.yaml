@@ -1,0 +1,174 @@
+version: 0.11.0
+services:
+  # Postgres service
+  postgres:
+
+    # Postgres username
+    user:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: postgres.user
+
+    # Postgres password
+    password:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: postgres.password
+
+    database: hasuradb
+    port: "5432"
+
+  # Configuration for the auth service
+  auth:
+    djangoSecretKey:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.secretKey
+    debug: "yes" # set empty string if want to set to false; default: false
+    logLevel: DEBUG # default: WARN
+    saUser: admin
+    saPassword:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.admin.password
+    saEmail: admin@example.com
+    saMobile: '9988776655'
+    # account/session
+    loginFields: '["username", "email", "mobile"]' # default: username, email, mobile.
+    concurrentSessions: "true" # set empty string if want to set to false; default: true
+    passwordMinLength: "8" # default: 8
+    passwordResetExpiresDays: "2" # default: 2
+    allowUserAccountDelete: "yes" # set empty string if want to set to false; default: false
+    sessionExpireOnBrowserClose: "yes" # set empty string if want to set to false; default: false
+    # cookie
+    cookieName: dinoisses
+    cookieAge: "1209600" # in seconds; default 3 weeks.
+    cookieServerOnly: "yes" # set empty string if want to set to false; default: true
+    cookiePath: '/' # default: /
+    cookieSecure: "" # set empty string if want to set to false; default: false
+    # recaptcha
+    recaptchaEnabled: "" # set empty string if want to set to false; default: false
+    recaptchaSecret:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.recaptcha.secret
+    # email
+    emailVerificationMandatory: "" # set empty string if want to set to false; default: false
+    updateUserOnEmailConfirm: "yes" # set empty string if want to set to false; default: true
+    emailProvider: "sparkpost" # valid: 'sparkpost', 'aws', 'mandrill'
+    emailSenderId: "admin@example.com" # email address of the sender
+    emailSenderName: "Example Webmaster" # name of the sender
+    emailSparkpostKey:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.sparkpost.key
+    emailMandrillKey: ""
+    emailAwsKey: ""
+    emailAwsSecretKey: ""
+    emailVerificationExpiresDays: "5" # default: 5
+    # templates uses Python's string interpolation. Remember to escape %
+    # characters in your templates.
+    emailTemplateRegister: |
+      Hi, Please click on http://myawesomeapp.com/%(token)s to verify your email.
+    emailTemplateVerify: |
+      Hi, Please click on http://myawesomeapp.com/%(token)s to verify your email.
+    emailTemplateForgotPass: |
+      Hi %(name)s, <br/>click on http://myawesomeapp.com/resetpassword/%(token)s to reset your password.
+    emailTemplateWelcomeNew: ""
+    emailTemplateEmailChanged: ""
+    emailTemplateMobileChanged: ""
+    # mobile
+    mobileVerificationMandatory: "" # set empty string if want to set to false; default: false
+    smsProvider: msg91 # valid: msg91
+    mobileVerificationExpiresMins: "15" # in mins. default: 15
+    mobileMsg91Key:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.msg91.key
+    mobileSenderName: "MyAwesomeApp"
+    mobileTemplateRegister: |
+      Welcome to MyAwesomeApp %(name)s! Your OTP is %(otp)s.
+    mobileTemplateVerify: |
+      Hi %(name)s. Verify your phone for your MyAwesomeApp account. Your OTP is %(otp)s.
+    mobileTemplateWelcomeNew: ""
+    mobileTemplateEmailChanged: ""
+    # otp login
+    allowOTPLogin: "" # set empty string if want to set to false; default: false
+    allowOTPSignup: "" # set empty string if want to set to false; default: false
+    # social login
+    # google
+    googleClientId: ""
+    googleClientSecret:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.google.client_secret
+    googleScopes: ""
+    googleRedirectUri: ""
+    # facebook
+    facebookClientId: ""
+    facebookClientSecret:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.facebook.client_secret
+    facebookScopes: ""
+    facebookRedirectUri: ""
+    # github
+    githubClientId: ""
+    githubClientSecret:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.github.client_secret
+    githubScopes: ""
+    githubRedirectUri: ""
+    # linkedin
+    linkedInClientId: ""
+    linkedInClientSecret:
+      secretKeyRef:
+        name: hasura-project-secrets
+        key: auth.linkedin.client_secret
+    linkedInScopes: ""
+    linkedInRedirectUri: ""
+
+domains:
+  c103.hasura.me:
+    ssl: null
+
+ssh:
+  authorizedKeys:
+    secretKeyRef:
+      name: hasura-project-secrets
+      key: ssh.authorizedKeys
+
+routes:
+  http:
+    data:
+      "/": &upstream_conf
+        upstreamService:
+          namespace: hasura
+          name: data
+        upstreamServicePort: 80
+        upstreamServicePath: "/"
+        enableCORS: true
+        enableAuth: true
+        enableWebsockets: true
+    auth:
+      "/":
+        << : *upstream_conf
+        upstreamService:
+          namespace: hasura
+          name: auth
+    k8s:
+      "/":
+        << : *upstream_conf
+        upstreamService:
+          namespace: hasura
+          name: k8s
+    console:
+      "/":
+        << : *upstream_conf
+        upstreamService:
+          namespace: hasura
+          name: console
+
+continuousIntegration:
+  remotes: {}
