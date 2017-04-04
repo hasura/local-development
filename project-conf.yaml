@@ -31,8 +31,8 @@ data:
               "key": "auth.secretKey"
             }
           },
-          "debug": "yes",
-          "logLevel": "DEBUG",
+          "debug": "",
+          "logLevel": "WARN",
           "saUser": "admin",
           "saPassword": {
             "secretKeyRef": {
