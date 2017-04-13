@@ -37,3 +37,16 @@ curl \
 - Run ``kubectl create ns hasura``
 - Run ``kubectl create -f controller-configmap.yaml``
 - Run ``kubectl create -f shukra-deployment.yaml``
+- Several deployments will now automatically be created.
+  Your Hasura project will be ready, as soon as
+  ``console.c101.hasura.me`` is accessible and
+  ``kubectl -n hasura get pods`` shows all the Hasura platform services as running (data, auth, console, sshd, postgres, redis etc.)
+
+# Cleanup / uninstall / retry after error
+
+- ``kubectl delete ns hasura`` (This process takes a while. Keep an eye out on kubectl get ns to see the status of the Hasura namespace)
+- ``kubectl detete cm hasura-project-conf hasura-project-status``
+- ``kubectl detete secret hasura-project-secrets``
+- Remove the postgres persistent directory:
+  - ``minikube ssh``
+  - ``$ cd /data/hasura.io && sudo rm -r postgres``
