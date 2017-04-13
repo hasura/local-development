@@ -1,8 +1,8 @@
 # Pre-requisites
 
-- Install minikube
+- Install minikube (https://kubernetes.io/docs/getting-started-guides/minikube/#installation)
 
-- Install kubectl
+- Install kubectl (https://kubernetes.io/docs/tasks/kubectl/install/)
 
 - Start minikube:
 
@@ -25,8 +25,11 @@ curl \
   https://cloud.beta.hasura.io/v1/localdev
 ```
 
-- Let's say the domain label is: ``c101.hasura.me``
+- ALTERNATIVELY, you can create your own DNS label and add it to ``/etc/hosts``.
+  However, you'll have to add an entry to ``/etc/hosts`` for every subdomain.
 
+- Let's say the domain label is: ``c101.hasura.me``.
+  Now, subdomain.c101.hasura.me will redirect to your minikube (this will only work locally ofcourse).
 
 # Instructions:
 
@@ -40,13 +43,17 @@ curl \
 - Several deployments will now automatically be created.
   Your Hasura project will be ready, as soon as
   ``console.c101.hasura.me`` is accessible and
-  ``kubectl -n hasura get pods`` shows all the Hasura platform services as running (data, auth, console, sshd, postgres, redis etc.)
+  ``kubectl -n hasura get pods`` shows all the Hasura platform services as running (data, auth, console, sshd, postgres, session-redis etc.)
+- Login to the console with: admin, adminpassword
+- Postgres login: admin, pgpassword
 
-# Cleanup / uninstall / retry after error
+# Cleanup / uninstall / retry if error
 
-- ``kubectl delete ns hasura`` (This process takes a while. Keep an eye out on kubectl get ns to see the status of the Hasura namespace)
-- ``kubectl delete cm hasura-project-conf hasura-project-status``
-- ``kubectl delete secret hasura-project-secrets``
-- Remove the postgres persistent directory:
-  - ``minikube ssh``
-  - ``$ cd /data/hasura.io && sudo rm -r postgres``
+- Delete the minikube instance: ``minikube delete``
+- Re-create it with: ``minikube start``
+
+# Upcoming features
+
+- Migration from local development (minikube) to kubernetes on any cloud provider
+- Expose local minikube to the public Internet for easy testing/sharing (currently, c101.hasura.me type domains
+  cannot be shared because they are just labels to point to the local minikube ip)
