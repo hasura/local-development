@@ -45,8 +45,8 @@ curl \
 # Cleanup / uninstall / retry after error
 
 - ``kubectl delete ns hasura`` (This process takes a while. Keep an eye out on kubectl get ns to see the status of the Hasura namespace)
-- ``kubectl detete cm hasura-project-conf hasura-project-status``
-- ``kubectl detete secret hasura-project-secrets``
+- ``kubectl delete cm hasura-project-conf hasura-project-status``
+- ``kubectl delete secret hasura-project-secrets``
 - Remove the postgres persistent directory:
   - ``minikube ssh``
   - ``$ cd /data/hasura.io && sudo rm -r postgres``
