@@ -136,7 +136,7 @@ data:
         }
       },
       "domains": {
-        "c103.hasura.me": {
+        "vcap.me": {
           "ssl": null
         }
       },
