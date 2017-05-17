@@ -26,8 +26,10 @@ minikube ip
 - Run ``kubectl create -f controller-configmap.yaml``
 - Run ``kubectl create -f shukra-deployment.yaml``
 - Several deployments will now automatically be created.
-- For Windows, follow instructions from https://github.com/hasura/support/issues/250#issuecomment-299862303.
-- For Linux/Mac, Run ``sudo ssh -p 22 80:$(minikube ip):80 docker@$(minikube ip)``. Default password for docker user is `tcuser`.
+- To access the cluster on localhost (actually on the vcap.me domain), we have to setup port forwarding:
+  - For Windows, follow instructions here: https://github.com/hasura/support/issues/250#issuecomment-299862303.
+  - For Linux/Mac, Run: ``sudo ssh -p 22 80:$(minikube ip):80 docker@$(minikube ip)``. The default password for `docker` user is `tcuser`.
+  - This will forward port 80 on your local machine to the minikube cluster.
 - Your Hasura project will be ready, as soon as
   ``console.vcap.me`` is accessible and
   ``kubectl -n hasura get pods`` shows all the Hasura platform services as running (data, auth, console, sshd, postgres, session-redis etc.)
@@ -35,12 +37,11 @@ minikube ip
 - Postgres login: admin, pgpassword
 
 # Cleanup / uninstall / retry if error
-
 - Delete the minikube instance: ``minikube delete``
 - Re-create it with: ``minikube start``
 
-# Upcoming features
+# Exposing local minikube to public Internet
+Follow the instructions here: https://github.com/hasura/ngrok
 
-- Migration from local development (minikube) to kubernetes on any cloud provider
-- Expose local minikube to the public Internet for easy testing/sharing (currently, c101.hasura.me type domains
-  cannot be shared because they are just labels to point to the local minikube ip)
+# Upcoming features
+- Migration from local development (minikube) to Kubernetes cluster on any cloud provider.
