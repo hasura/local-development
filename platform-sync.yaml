@@ -1,14 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: shukra
+  name: platform-sync-v0.11.0
   namespace: hasura
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: shukra
+        app: platform-sync
     spec:
       containers:
       - name: shukra
