@@ -40,7 +40,7 @@ minikube ip
 
 - To access the cluster on localhost (actually on the vcap.me domain), we have to setup port forwarding:
   - For Windows, follow instructions here: https://github.com/hasura/support/issues/250#issuecomment-299862303.
-  - For Linux/Mac, Run: ``sudo ssh -p 22 80:$(minikube ip):80 docker@$(minikube ip)``. The default password for `docker` user is `tcuser`.
+  - For Linux/Mac, Run: ``sudo ssh -p 22 -L 80:$(minikube ip):80 docker@$(minikube ip)``. The default password for `docker` user is `tcuser`.
   - This will forward port 80 on your local machine to the minikube cluster.
 - Your Hasura project should now be accessible at http://console.vcap.me.
   ``kubectl -n hasura get pods`` shows all the Hasura platform services as running (data, auth, console, sshd, postgres, session-redis etc.)
