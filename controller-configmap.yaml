@@ -9,11 +9,12 @@ data:
         "apiServer" : {
             "type": "auto"
         },
+        "imageRegistry" : "hasuraci",
         "projectNamespace" : "default",
         "controllerNamespace" : "hasura",
         "provider" : {
             "Local": {
-                "gatewayIp" : "192.168.99.103",
+                "gatewayIp" : "192.168.99.100",
                 "sshPort" : "2022",
                 "persistentDirectory" : "/data"
             }

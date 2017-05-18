@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: platform-init-v0.11.0
+  namespace: hasura
+spec:
+  containers:
+  - name: shukra
+    image: hasuraci/shukra:v0.11.0
+    command:
+    - shukra
+    - -c
+    - /conf/controller-conf.json
+    - init
+    volumeMounts:
+    - name: controller-conf
+      mountPath: /conf
+  volumes:
+  - name: controller-conf
+    configMap:
+      name: controller-conf
+  restartPolicy: Never
