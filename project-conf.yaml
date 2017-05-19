@@ -75,7 +75,10 @@ data:
               },
               "enableCORS": true,
               "enableWebsockets": true,
-              "upstreamServicePath": "/"
+              "upstreamServicePath": "/",
+              "locationDirectives" : [
+                "client_max_body_size 100M;"
+              ]
             }
           }
         },
