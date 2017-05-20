@@ -47,7 +47,7 @@
 - Now, run ``kubectl create -f platform-sync.yaml``. This will bring up all the services and keeps them in sync with the project conf. You can either follow the logs of the platform-sync pod in the hasura namespace or check the status of the project as follows:
 
   ```
-  kubectl get cm hasura-project-status -o json --watch
+  kubectl get cm hasura-project-status -o json
   ```
 
   This outputs some JSON. We wait for the ``services`` key's summary to say ``Synced``. When it does, the platform is up and running.
@@ -59,7 +59,7 @@
     ```
     export GW_IP=$(minikube ip) && sudo ssh -L 80:$GW_IP:80 -L 2022:$GW_IP:2022 docker@$GW_IP
     ```
-    The default password for `docker` user is `tcuser`. This will forward port 80 (and hence the sudo) and 2022 on your local machine to the minikube cluster.
+    The default password for `docker` user is `tcuser`. This will forward port 80 (and hence the sudo) and 2022 on your local machine to the minikube cluster. Once the SSH command runs succesfully, keep that terminal open and don't close it. Ignore this terminal for subsequent instructions.
 - Your Hasura project should now be accessible at http://console.vcap.me.
   ``kubectl -n hasura get pods`` shows all the Hasura platform services as running (data, auth, console, sshd, postgres, session-redis etc.)
 - Login to the console with: ``admin``, ``adminpassword``
