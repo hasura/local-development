@@ -57,7 +57,7 @@
   - On Linux/Mac, Run:
 
     ```
-    export GW_IP=$(minikube ip) && sudo ssh -L 80:$GW_IP:80 -L 2022:$GW_IP:2022 docker@$GW_IP
+    export GW_IP=$(minikube ip) && sudo ssh -o UserKnownHostsFile=/dev/null -L 80:$GW_IP:80 -L 2022:$GW_IP:2022 docker@$GW_IP
     ```
     Paste the above command as is (don't substitute any values) into your terminal and run it. The default password for `docker` user is `tcuser`. This will forward port 80 (and hence the sudo) and 2022 on your local machine to the minikube cluster. Once the SSH command runs succesfully, keep that terminal open and don't close it. Ignore this terminal for subsequent instructions.
 - Your Hasura project should now be accessible at http://console.vcap.me.
