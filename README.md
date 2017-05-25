@@ -53,7 +53,7 @@
   This outputs some JSON. We wait for the ``services`` key's summary to say ``Synced``. When it does, the platform is up and running.
 
 - To access the platform on a domain, we make use of ``vcap.me``, a domain which always points to 127.0.0.1. For this to work, we have to setup port forwarding:
-  - For Windows, follow instructions here: https://github.com/hasura/support/issues/250#issuecomment-299862303.
+  - For Windows, follow instructions here: https://github.com/hasura/support/issues/275#issuecomment-303976934.
   - On Linux/Mac, Run:
 
     ```
