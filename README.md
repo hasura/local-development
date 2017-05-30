@@ -2,7 +2,7 @@
 
 # Pre-requisites
 
-- Install [minikube](https://github.com/kubernetes/minikube/releases) (version ``0.18.0``) . Do not install version ``0.19.0``. There are issues with kube-dns shipped with minikube 0.19.
+- Install [minikube](https://github.com/kubernetes/minikube/releases/tag/v0.18.0) (version ``0.18.0``) . Do not install version ``0.19.0``. There are issues with kube-dns shipped with minikube 0.19.
 
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
 
@@ -16,7 +16,7 @@
 
 - Clone this repo and cd into the directory.
   ```
-  git clone git@github.com:hasura/local-development.git
+  git clone https://github.com/hasura/local-development.git
   cd local-development
   ```
 
