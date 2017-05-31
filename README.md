@@ -3,8 +3,8 @@
 # Pre-requisites
 
 - Install [minikube](https://github.com/kubernetes/minikube/releases/tag/v0.18.0) (version ``0.18.0``) . Do not install version ``0.19.0``. There are issues with kube-dns shipped with minikube 0.19.
-
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
+- Install [`jq`](https://stedolan.github.io/jq/), a super handy tool for managing JSON from the command line.
 
 # Instructions:
 
