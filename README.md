@@ -36,21 +36,21 @@
 
 **NOTE:** The next steps will roughly download about 1-1.5GB of docker images.
 
-- Run ``kubectl create -f platform-init.yaml``. This will initialise the state for the platform. It can take a while, follow the logs by running:
-
+- Now, initialise the Hasura project (this will run initialise the state for the platform, eg: running initial schema migrations)
+  ``` 
+  kubectl create -f platform-init.yaml
   ```
-  kubectl logs platform-init-v0.11.0 -n hasura --follow
+  It can take a while, follow the logs by running: ``kubectl logs platform-init-v0.11.0 -n hasura --follow``
+
+  When you see a line that says "**successfully initialised the platform's state**", you can move onto the next step.
+
+- Now, run the Hasura platform. This will bring up all the services and keeps them in sync with the project configuration. 
   ```
-
-  When you see a line that says "successfully initialised the platform's state", you can move onto the next step.
-
-- Now, run ``kubectl create -f platform-sync.yaml``. This will bring up all the services and keeps them in sync with the project conf. You can either follow the logs of the platform-sync pod in the hasura namespace or check the status of the project as follows:
-
+  kubectl create -f platform-sync.yaml
   ```
-  kubectl get cm hasura-project-status -o json
-  ```
-
-  This outputs some JSON. We wait for the ``services`` key's summary to say ``Synced``. When it does, the platform is up and running.
+  Again, this command will take some time because all the docker images for running these services will be downloaded. You'll probably have to wait between 5mins to upwards of 20mins depending on your Internet connection. 
+  To check the status of the project, run: ``kubectl get cm hasura-project-status -o json | jq -r '.data.services' | jq '.summary.tag'``
+  This should output a value "**Synced**", which means that you're good to go!
 
 - To access the platform on a domain, we make use of ``vcap.me``, a domain which always points to 127.0.0.1. For this to work, we have to setup port forwarding:
   - For Windows, follow instructions here: https://github.com/hasura/support/issues/275#issuecomment-303976934.
