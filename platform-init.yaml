@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: platform-init-v0.11.0
+  name: platform-init-v0.11.3
   namespace: hasura
 spec:
   containers:
   - name: shukra
-    image: hasuraci/shukra:v0.11.0
+    image: hasuraci/shukra:v0.11.3
     command:
     - shukra
     - -c
