@@ -40,7 +40,7 @@
   ``` 
   kubectl create -f platform-init.yaml
   ```
-  It can take a while, follow the logs by running: ``kubectl logs platform-init-v0.11.0 -n hasura --follow``
+  It can take a while, follow the logs by running: ``kubectl logs platform-init-v0.11.3 -n hasura --follow``
 
   When you see a line that says "**successfully initialised the platform's state**", you can move onto the next step.
 
