@@ -2,7 +2,7 @@
 
 # Pre-requisites
 
-- Install [minikube](https://github.com/kubernetes/minikube/releases/tag/v0.18.0) (version ``0.18.0``) . Do not install version ``0.19.0``. There are issues with kube-dns shipped with minikube 0.19.
+- Install [minikube](https://github.com/kubernetes/minikube/releases/tag/v0.18.0) (version ``0.18.0`` or ``0.19.1``) . Do not install version ``0.19.0``. There are issues with kube-dns shipped with minikube `0.19.0`.
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
 - Install [`jq`](https://stedolan.github.io/jq/), a super handy tool for managing JSON from the command line.
 
@@ -37,18 +37,18 @@
 **NOTE:** The next steps will roughly download about 1-1.5GB of docker images.
 
 - Now, initialise the Hasura project (this will run initialise the state for the platform, eg: running initial schema migrations)
-  ``` 
+  ```
   kubectl create -f platform-init.yaml
   ```
   It can take a while, follow the logs by running: ``kubectl logs platform-init-v0.11.3 -n hasura --follow``
 
   When you see a line that says "**successfully initialised the platform's state**", you can move onto the next step.
 
-- Now, run the Hasura platform. This will bring up all the services and keeps them in sync with the project configuration. 
+- Now, run the Hasura platform. This will bring up all the services and keeps them in sync with the project configuration.
   ```
   kubectl create -f platform-sync.yaml
   ```
-  Again, this command will take some time because all the docker images for running these services will be downloaded. You'll probably have to wait between 5mins to upwards of 20mins depending on your Internet connection. 
+  Again, this command will take some time because all the docker images for running these services will be downloaded. You'll probably have to wait between 5mins to upwards of 20mins depending on your Internet connection.
   To check the status of the project, run: ``kubectl get cm hasura-project-status -o json | jq -r '.data.services' | jq '.summary.tag'``
   This should output a value "**Synced**", which means that you're good to go!
 
@@ -64,6 +64,21 @@
   ``kubectl -n hasura get pods`` shows all the Hasura platform services as running (data, auth, console, sshd, postgres, session-redis etc.)
 - Login to the console with: ``admin``, ``adminpassword``
 - Postgres login: ``admin``, ``pgpassword``
+
+# Updating the platform version:
+
+The current version of the platform is `v0.11.3`.
+
+When you login to the console, the current version of the platform is shown there. To upgrade your platform, you can follow these steps.
+
+1. Run `kubectl get deployment -n hasura`.
+
+   If you see `platform-sync` (not `platform-sync-v0.11.0`) in the list, then run `kubectl replace -f platform-sync.yaml`. Go to step 2.
+
+   If you see `shukra` or `platform-sync-v0.11.0`. Run `kubectl delete deployment -n hasura shukra` or `kubectl delete deployment -n hasura platform-sync-v0.11`. Followed by `kubectl create -f platform-sync.yaml`. Go to step 2.
+
+2. The images of the updated services will be downloaded. You can monitor the status by looking at `kubectl get po -n hasura`. When everything is running, the upgrade is complete.
+
 
 # Errors:
 
