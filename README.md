@@ -1,8 +1,9 @@
 **NOTE:** If you have already setup local development before version ``v0.11.0``, please delete your minikube instance and start afresh. You can take dump of the database if you want to keep the data.
 
-# Pre-requisites
+# Prerequisites
 
-- Install [minikube](https://github.com/kubernetes/minikube/releases/tag/v0.18.0) (version ``0.18.0`` or ``0.19.1``) . Do not install version ``0.19.0``. There are issues with kube-dns shipped with minikube `0.19.0`.
+- Install [virtualbox](https://kubernetes.io/docs/tasks/tools/install-minikube).
+- Install [minikube](https://github.com/kubernetes/minikube/releases) (version ``0.18.0`` or ``0.19.1``) . Do not install version ``0.19.0``. There are issues with kube-dns shipped with minikube `0.19.0`.
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
 - Install [`jq`](https://stedolan.github.io/jq/), a super handy tool for managing JSON from the command line.
 
