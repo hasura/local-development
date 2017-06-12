@@ -2,20 +2,22 @@
 
 - Install [virtualbox](https://www.virtualbox.org/wiki/Downloads).
 - Install `hasuractl`.
-  For windows: download from here
-  For linux: download from here
-  For macosx: download from here
+  - For Windows: [windows-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/windows-amd64/hasuractl)
+  - For Linux: [linux-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/linux-amd64/hasuractl)
+  - For Mac: [mac-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/mac-amd64/hasuractl)
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
 
 # Starting hasura
 
-Create an account on beta.hasura.io if you do not have one already and then run
+(1) Create an account on beta.hasura.io if you do not have one.
+
+(2) Run:
 
 ```
 hasuractl login
 ```
 
-After you have successfully logged in, run this command:
+(3) After you have successfully logged in, run this command:
 
 **NOTE:** Please be advised that if you are running the next command for the first time, it will roughly download about 1-1.5GB of docker images.
 
