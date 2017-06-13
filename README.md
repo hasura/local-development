@@ -9,23 +9,23 @@
 
 # Starting hasura
 
-(1) Create an account on beta.hasura.io if you do not have one.
+1. Create an account on [beta.hasura.io](https://beta.hasura.io) if you do not have one.
 
-(2) Run:
+2. Run:
 
-```
-hasuractl login
-```
+   ```
+   hasuractl login
+   ```
 
-(3) After you have successfully logged in, run this command:
+3. After you have successfully logged in, run this command:
 
-**NOTE:** Please be advised that if you are running the next command for the first time, it will roughly download about 1-1.5GB of docker images.
+   **NOTE:** Please be advised that if you are running the next command for the first time, it will roughly download about 1-1.5GB of docker images.
 
-```
-hasuractl local start
-```
+   ```
+   hasuractl local start
+   ```
 
-It might take a long time for this to finish, depending on your internet connection. The command exits by pointing you to a url to login to the console.
+   It might take a long time for this to finish, depending on your internet connection. The command exits by pointing you to a url to login to the console.
 
 # Stopping hasura
 
