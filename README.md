@@ -82,9 +82,6 @@ kubectl delete po -n kube-system -l k8s-app=kube-dns
 
 Wait for a few seconds and try again.
 
-# Exposing local hasura to public Internet
-
-Follow the instructions here: https://github.com/hasura/ngrok
-
 # Upcoming features
+- Exposing local hasura to public internet
 - Migration from local development to Kubernetes cluster on any cloud provider.
