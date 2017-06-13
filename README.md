@@ -4,12 +4,12 @@
 - Install `hasuractl`.
   - Windows:
 
-    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.0/windows-amd64/hasuractl.exe) and place it in your `PATH`.
+    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.1/windows-amd64/hasuractl.exe) and place it in your `PATH`.
 
   - Linux:
 
     ```
-    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.0/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.1/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
     Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually.
@@ -17,7 +17,7 @@
   - Mac:
 
     ```
-    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.0/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.1/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
     Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually.
