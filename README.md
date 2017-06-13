@@ -4,7 +4,7 @@
 - Install `hasuractl`.
   - For Windows: [windows-amd64/hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.0/windows-amd64/hasuractl)
   - For Linux: [linux-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/linux-amd64/hasuractl)
-  - For Mac: [mac-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/mac-amd64/hasuractl)
+  - For Mac: [mac-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/darwin-amd64/hasuractl)
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
 
 # Starting hasura
