@@ -2,9 +2,26 @@
 
 - Install [virtualbox](https://www.virtualbox.org/wiki/Downloads).
 - Install `hasuractl`.
-  - For Windows: [windows-amd64/hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.0/windows-amd64/hasuractl.exe)
-  - For Linux: [linux-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/linux-amd64/hasuractl)
-  - For Mac: [mac-amd64/hasuractl](https://storage.googleapis.com/hasuractl/v0.1.0/darwin-amd64/hasuractl)
+  - Windows:
+
+    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.0/windows-amd64/hasuractl.exe) and place it in your `PATH`.
+
+  - Linux:
+
+    ```
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.0/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    ```
+
+    Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually.
+
+  - Mac:
+
+    ```
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.0/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    ```
+
+    Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually.
+
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
 
 # Starting hasura
