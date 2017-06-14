@@ -3,10 +3,12 @@
 - Install [virtualbox](https://www.virtualbox.org/wiki/Downloads).
   - You should have atleast 4GB of RAM (because the VM might take upto 2GB of RAM)
   - You should have a 64bit system (Windows or Mac or Linux)
+- Windows users: install [`git-bash`](https://git-for-windows.github.io/):
+  - You can use [this git bash installation guide](https://blog.hasura.io/setting-up-git-bash-for-windows-e26b59e44257) for reference
 - Install `hasuractl`.
   - Windows:
 
-    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.1/windows-amd64/hasuractl.exe) and place it in your `PATH`.
+    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.1/windows-amd64/hasuractl.exe) and place it in your `PATH`
 
   - Linux:
 
@@ -14,7 +16,7 @@
     curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.1/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
-    Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually.
+    Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually
 
   - Mac:
 
@@ -22,13 +24,13 @@
     curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.1/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
-    Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually.
+    Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually
 
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
 
 # Starting hasura
 
-1. Create an account on [beta.hasura.io](https://beta.hasura.io) if you do not have one.
+1. Create an account on [beta.hasura.io](https://beta.hasura.io) if you do not have one
 
 2. Run:
 
