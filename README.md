@@ -1,6 +1,8 @@
 # Prerequisites
 
 - Install [virtualbox](https://www.virtualbox.org/wiki/Downloads).
+  - You should have atleast 4GB of RAM (because the VM might take upto 2GB of RAM)
+  - You should have a 64bit system (Windows or Mac or Linux)
 - Install `hasuractl`.
   - Windows:
 
