@@ -78,7 +78,7 @@ The above command will delete the the VM completely and hence all the downloaded
 
 The current version of the platform is `v0.12.2`. No major features are added since `v0.11`. However, we will provide instructions to upgrade to `v0.12` soon.
 
-# Errors:
+# Common errors & troubleshooting:
 
 1) Windows: 
    ```
@@ -93,6 +93,14 @@ The current version of the platform is `v0.12.2`. No major features are added si
    ```
 
    Wait for a few seconds and try again.
+   
+3) Virtualbox or minikube errors:
+
+   If you are facing errors of the type: `Error getting state for host: machine does not exist`, make sure there's no `minikube` already lying around (run `minikube delete`). Then try to run `hasuractl local stop` and after a few minutes (check your virtualbox console to see if the VM has actually stopped) run `hasuractl local start` again and everything should be back up.
+   If that also doesn't work, `hasuractl local clean`, wait for a few minutes and then `hasuractl local start` again
+   If that also doesn't work, remove the `~/.minihasura` folder and start everything from the beginning of this guide again viz. `hasuractl login`, `hasuractl local start`
+   
+   Make sure that 
 
 # Upcoming features
 - Exposing local hasura to public internet
