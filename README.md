@@ -5,10 +5,12 @@
   - You should have a 64bit system (Windows or Mac or Linux)
 - Windows users: install [`git-bash`](https://git-for-windows.github.io/):
   - You can use [this git bash installation guide](https://blog.hasura.io/setting-up-git-bash-for-windows-e26b59e44257) for reference
+  - Use `git-bash` for running all the subsequent commands in this README!
 - Install `hasuractl`.
   - Windows:
 
     Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.1/windows-amd64/hasuractl.exe) and place it in your `PATH`
+    Refer to this [video reference](https://drive.google.com/file/d/0B_G1GgYOqazYUDJFcVhmNHE1UnM/view) if you need help with the installation on Windows.
 
   - Linux:
 
@@ -78,13 +80,19 @@ The current version of the platform is `v0.12.2`. No major features are added si
 
 # Errors:
 
-When you try to login to the console, if it fails with a message saying 'postgres.hasura' is not resolved, run this command:
+1) Windows: 
+   ```
+   ...The system cannot find the PATH specified.
+   ```
+   You've not added `hasuractl` to the `PATH` correctly and/or you're not using `git-bash`.
 
-```
-kubectl delete po -n kube-system -l k8s-app=kube-dns
-```
+2) When you try to login to the console, if it fails with a message saying 'postgres.hasura' is not resolved, run this command:
 
-Wait for a few seconds and try again.
+   ```
+   kubectl delete po -n kube-system -l k8s-app=kube-dns
+   ```
+
+   Wait for a few seconds and try again.
 
 # Upcoming features
 - Exposing local hasura to public internet
