@@ -131,15 +131,9 @@ The current version of the platform is `v0.12.2`. No major features are added si
 
    If you are facing errors of the type: `Error getting state for host: machine does not exist`, try each of the following:
 
-   1. Make sure there's no `minikube` already lying around (run `minikube delete`).
-      Then try to run `hasuractl local stop` and after a few minutes (check your virtualbox console to see if the VM has actually stopped),
-      run `hasuractl local start` again and everything should be back up.
-   2. If that also doesn't work,
-      `hasuractl local clean`, wait for a few minutes
-       and then `hasuractl local start` again
-   3. If that also doesn't work,
-      remove the `~/.minihasura` folder and
-      start everything from the beginning of this guide again viz. `hasuractl login`, `hasuractl local start`
+   1. Run `hasuractl local stop` and after a few minutes (check your virtualbox console to see if the VM has actually stopped), run `hasuractl local start` again and everything should be back up.
+   2. If that doesn't work, run `hasuractl local clean`, wait for a few minutes and then `hasuractl local start` again.
+   3. If none of the above work, remove the `~/.minihasura` folder and start everything from the beginning of this guide again viz. `hasuractl login`, `hasuractl local start`.
 
 # Upcoming features
 - Migration from local development to Kubernetes cluster on any cloud provider.
