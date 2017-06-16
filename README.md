@@ -9,13 +9,12 @@
 - Install `hasuractl`.
   - Windows:
 
-    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.1/windows-amd64/hasuractl.exe) and place it in your `PATH`
-    Refer to this [video reference](https://drive.google.com/file/d/0B_G1GgYOqazYUDJFcVhmNHE1UnM/view) if you need help with the installation on Windows.
+    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.2/windows-amd64/hasuractl.exe) and place it in your `PATH`. Refer to this [video reference](https://drive.google.com/file/d/0B_G1GgYOqazYUDJFcVhmNHE1UnM/view) if you need help with the installation on Windows.
 
   - Linux:
 
     ```
-    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.1/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.2/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
     Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually
@@ -23,12 +22,17 @@
   - Mac:
 
     ```
-    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.1/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.2/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
     Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually
 
 - Install latest kubectl (>= 1.6.0) (https://kubernetes.io/docs/tasks/kubectl/install/)
+
+### NOTE:
+
+- If you are on windows, you should only use git-bash to execute commands that you see in this documentation.
+- If you already have hasuractl installed, replace the old binary with the new one.
 
 # Starting hasura
 
@@ -74,13 +78,42 @@ hasuractl local delete
 
 The above command will delete the the VM completely and hence all the downloaded images with it.
 
+# Exposing your local hasura project over internet
+
+`hasuractl local start` gives you a URL (eg, `c100.hasura.me`) that points to your local project, but this URL only works locally on your computer.
+
+If you need your iOS/Android app to access the project, or share the project publicly, you need to expose the project over internet. To do this, login to your beta dashboard, go to https://beta.hasura.io/local-development, and modify the Public URL. After this, you can run
+
+```
+hasuractl local expose
+```
+
+Now, you can access your project at the Public URL you've configured.
+
+**NOTE**:
+On Windows, currently the command does not output anything. It works nonetheless.
+
+
+# Adding your ssh key
+
+Adding your SSH key enables you to use the `git push` feature. To add your ssh key, you can run
+
+```
+hasuractl project add-ssh-key
+```
+
+### NOTE:
+
+- Your public key has to exist before running this command. If you don't have a public key, you can follow the instructions [here](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key).
+- You can also add the public key from the advanced settings in the console.
+
 # Updating the platform version:
 
 The current version of the platform is `v0.12.2`. No major features are added since `v0.11`. However, we will provide instructions to upgrade to `v0.12` soon.
 
 # Common errors & troubleshooting:
 
-1) Windows: 
+1) Windows:
    ```
    ...The system cannot find the PATH specified.
    ```
@@ -93,21 +126,20 @@ The current version of the platform is `v0.12.2`. No major features are added si
    ```
 
    Wait for a few seconds and try again.
-   
+
 3) Virtualbox or minikube errors:
 
    If you are facing errors of the type: `Error getting state for host: machine does not exist`, try each of the following:
-   
-   1. Make sure there's no `minikube` already lying around (run `minikube delete`). 
-      Then try to run `hasuractl local stop` and after a few minutes (check your virtualbox console to see if the VM has actually stopped), 
+
+   1. Make sure there's no `minikube` already lying around (run `minikube delete`).
+      Then try to run `hasuractl local stop` and after a few minutes (check your virtualbox console to see if the VM has actually stopped),
       run `hasuractl local start` again and everything should be back up.
-   2. If that also doesn't work, 
-      `hasuractl local clean`, wait for a few minutes 
+   2. If that also doesn't work,
+      `hasuractl local clean`, wait for a few minutes
        and then `hasuractl local start` again
-   3. If that also doesn't work, 
-      remove the `~/.minihasura` folder and 
+   3. If that also doesn't work,
+      remove the `~/.minihasura` folder and
       start everything from the beginning of this guide again viz. `hasuractl login`, `hasuractl local start`
-   
+
 # Upcoming features
-- Exposing local hasura to public internet
 - Migration from local development to Kubernetes cluster on any cloud provider.
