@@ -9,12 +9,12 @@
 - Install `hasuractl`.
   - Windows:
 
-    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.2/windows-amd64/hasuractl.exe) and place it in your `PATH`. Refer to this [video reference](https://drive.google.com/file/d/0B_G1GgYOqazYUDJFcVhmNHE1UnM/view) if you need help with the installation on Windows.
+    Download [hasuractl.exe](https://storage.googleapis.com/hasuractl/v0.1.4/windows-amd64/hasuractl.exe) and place it in your `PATH`. Refer to this [video reference](https://drive.google.com/file/d/0B_G1GgYOqazYUDJFcVhmNHE1UnM/view) if you need help with the installation on Windows.
 
   - Linux:
 
     ```
-    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.2/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.4/linux-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
     Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually
@@ -22,7 +22,7 @@
   - Mac:
 
     ```
-    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.2/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
+    curl -Lo hasuractl https://storage.googleapis.com/hasuractl/v0.1.4/darwin-amd64/hasuractl && chmod +x hasuractl && sudo mv hasuractl /usr/local/bin/
     ```
 
     Feel free to leave off the `sudo mv hasuractl /usr/local/bin` if you would like to add hasuractl to your path manually
@@ -109,7 +109,7 @@ hasuractl project add-ssh-key
 
 # Updating the platform version:
 
-The current version of the platform is `v0.12.2`. No major features are added since `v0.11`. However, we will provide instructions to upgrade to `v0.12` soon.
+The current version of the platform is `v0.12.3`. No major features are added since `v0.11`. However, we will provide instructions to upgrade to `v0.12` soon.
 
 # Common errors & troubleshooting:
 
@@ -119,15 +119,7 @@ The current version of the platform is `v0.12.2`. No major features are added si
    ```
    You've not added `hasuractl` to the `PATH` correctly and/or you're not using `git-bash`.
 
-2) When you try to login to the console, if it fails with a message saying 'postgres.hasura' is not resolved, run this command:
-
-   ```
-   kubectl delete po -n kube-system -l k8s-app=kube-dns
-   ```
-
-   Wait for a few seconds and try again.
-
-3) Virtualbox or minikube errors:
+2) Virtualbox or minikube errors:
 
    If you are facing errors of the type: `Error getting state for host: machine does not exist`, try each of the following:
 
