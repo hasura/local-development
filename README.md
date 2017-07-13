@@ -78,6 +78,27 @@ hasuractl local delete
 
 The above command will delete the the VM completely and hence all the downloaded images with it.
 
+# Quickstart
+
+`hasuractl quickstart list` will give you a list of currently available quickstart base repos.
+
+You can choose any project from the available list, for example, if you want to use nodejs-express, you'll have to run the quickstart command with the project name, followed by the desired app name, like-
+```
+hasuractl quickstart nodejs-express app
+```
+Doing so will create a copy of the quickstart project in the current directory which you can git-push to your app.
+
+#### NOTE: It's not required that the VM should be running for this command to work. 
+
+# Credentials
+
+You can get the project credentials by running the following command-
+```
+hasuractl credentials
+```
+#### NOTE: The VM must be running in order to fetch the project credentials.
+
+
 # Exposing your local hasura project over internet
 
 `hasuractl local start` gives you a URL (eg, `c100.hasura.me`) that points to your local project, but this URL only works locally on your computer.
@@ -91,7 +112,7 @@ hasuractl local expose
 Now, you can access your project at the Public URL you've configured.
 
 **NOTE**:
-On Windows, currently the command does not output anything. It works nonetheless.
+On Windows, currently the command does not output anything when using Git Bash. It works nonetheless. You can use CMD instead, ONLY FOR THIS COMMAND.
 
 
 # Adding your ssh key
@@ -99,7 +120,7 @@ On Windows, currently the command does not output anything. It works nonetheless
 Adding your SSH key enables you to use the `git push` feature. To add your ssh key, you can run
 
 ```
-hasuractl project add-ssh-key
+hasuractl add-ssh-key
 ```
 
 ### NOTE:
